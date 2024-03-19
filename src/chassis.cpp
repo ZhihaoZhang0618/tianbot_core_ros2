@@ -155,7 +155,7 @@ TianbotChasis::TianbotChasis(const std::shared_ptr<rclcpp::Node> & node) : Tianb
 {
 
     
-    // 获取参数
+    //获取参数
     // node->get_parameter_or("base_frame", base_frame_, DEFAULT_BASE_FRAME);
     // node->get_parameter_or("odom_frame", odom_frame_, DEFAULT_ODOM_FRAME);
     // node->get_parameter_or("imu_frame", imu_frame_, DEFAULT_IMU_FRAME);
@@ -165,20 +165,21 @@ TianbotChasis::TianbotChasis(const std::shared_ptr<rclcpp::Node> & node) : Tianb
     node->declare_parameter("odom_frame", odom_frame_);
     node->declare_parameter("imu_frame", imu_frame_);
     node->declare_parameter("publish_tf", publish_tf_);
-
+    
     if (!node->get_parameter("base_frame", base_frame_)) {
         base_frame_ = DEFAULT_BASE_FRAME;
     }
     if (!node->get_parameter("odom_frame", odom_frame_)) {
         odom_frame_ = DEFAULT_ODOM_FRAME;
     }
+    printf("odom_frame: %s", odom_frame_.c_str());
     if (!node->get_parameter("imu_frame", imu_frame_)) {
         imu_frame_ = DEFAULT_IMU_FRAME;
     }
     if (!node->get_parameter("publish_tf", publish_tf_)) {
         publish_tf_ = DEFAULT_PUBLISH_TF;
     }   
-
+    
 
     // 初始化发布者
     // rclcpp::Node::SharedPtr nh = rclcpp::Node::make_shared("tianbot_core");
